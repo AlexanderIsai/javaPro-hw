@@ -1,20 +1,12 @@
 package hw1;
 
-
-//1)Создать класс Person.
 public class Person {
 
-//    а) Имя человека (выбрать самостоятельно тип данных)
-//    б) Возраст человека (выбрать самостоятельно тип данных)
-//    в) Рост (выбрать самостоятельно тип данных)
-//    г) Вес (выбрать самостоятельно тип данных)
+    private String namePerson;
+    private int agePerson;
+    private int growthPerson;
+    private int weightPerson;
 
-    String namePerson;
-    int agePerson;
-    int growthPerson;
-    int weightPerson;
-
-//    перед int money переменной поставить ключевое слово private. Описать, что произойдет в программе.
     private int moneyPerson;
 // Идентификатор доступа private делает переменную приватной - т.е. доступной и видимой только в текущем классе
 //    (Person). Также Идея хочет ее сделать константой (т.е. добавить ключевое слово final), однако, это не
@@ -32,10 +24,6 @@ public class Person {
         this.moneyPerson = moneyPerson;
     }
 
-//    Добавить методы:
-//    a) Инфо о человеке. Печатает информацию о человеке - сколько лет, его имя рост и все.
-//    б) Идти на работу. Если возраст меньше 18 или больше 70, то пишет "отдыхаю дома", иначе "работаю"
-
     public void getInfoAboutPerson(){
         System.out.println();
         System.out.println("Имя человека: " + namePerson);
@@ -50,10 +38,44 @@ public class Person {
             System.out.println("отдыхаю дома");
         } else System.out.println("работаю");
     }
-//Добавить поле "money" и создать метод getMoney, который
-//    делает return money (То есть просто возвращает количество денег у человека).
 
-    public int howMuchMoneyHasPerson(){
+    public String getNamePerson() {
+        return namePerson;
+    }
+
+    public void setNamePerson(String namePerson) {
+        this.namePerson = namePerson;
+    }
+
+    public int getAgePerson() {
+        return agePerson;
+    }
+
+    public void setAgePerson(int agePerson) {
+        this.agePerson = agePerson;
+    }
+
+    public int getGrowthPerson() {
+        return growthPerson;
+    }
+
+    public void setGrowthPerson(int growthPerson) {
+        this.growthPerson = growthPerson;
+    }
+
+    public int getWeightPerson() {
+        return weightPerson;
+    }
+
+    public void setWeightPerson(int weightPerson) {
+        this.weightPerson = weightPerson;
+    }
+
+    public int getMoneyPerson() {
         return moneyPerson;
+    }
+
+    public void setMoneyPerson(int moneyPerson) {
+        this.moneyPerson = moneyPerson;
     }
 }
