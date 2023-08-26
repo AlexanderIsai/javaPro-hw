@@ -2,12 +2,12 @@ package hw1;
 
 public class Person {
 
-    private String namePerson;
-    private int agePerson;
-    private int growthPerson;
-    private int weightPerson;
+    private String name;
+    private int age;
+    private int growth;
+    private int weight;
 
-    private int moneyPerson;
+    private int money;
 // Идентификатор доступа private делает переменную приватной - т.е. доступной и видимой только в текущем классе
 //    (Person). Также Идея хочет ее сделать константой (т.е. добавить ключевое слово final), однако, это не
 //    влияет на тип доступа. Если переменная у нас приватная, мы не сможем получить к ней доступ напрямую
@@ -16,66 +16,70 @@ public class Person {
 
 //    Добавить конструктор. Можно конструктор сгенерировать, но лучше написать самому
 
-    public Person(String namePerson, int agePerson, int growthPerson, int weightPerson, int moneyPerson) {
-        this.namePerson = namePerson;
-        this.agePerson = agePerson;
-        this.growthPerson = growthPerson;
-        this.weightPerson = weightPerson;
-        this.moneyPerson = moneyPerson;
+    public Person(String name, int age, int growth, int weight, int money) {
+        this.name = name;
+        this.age = age;
+        this.growth = growth;
+        this.weight = weight;
+        this.money = money;
     }
 
     public void getInfoAboutPerson(){
         System.out.println();
-        System.out.println("Имя человека: " + namePerson);
-        System.out.println("Возраст человека: " + agePerson + " лет");
-        System.out.println("Рост человека: " + growthPerson + " см");
-        System.out.println("Вес человека: " + weightPerson + " кг");
+        System.out.println("Имя человека: " + name);
+        System.out.println("Возраст человека: " + age + " лет");
+        System.out.println("Рост человека: " + growth + " см");
+        System.out.println("Вес человека: " + weight + " кг");
         System.out.println();
     }
 
     public void goToWork(){
-        if (agePerson < 18 || agePerson > 70){
+        if (age < 18 || age > 70){
             System.out.println("отдыхаю дома");
         } else System.out.println("работаю");
     }
 
-    public String getNamePerson() {
-        return namePerson;
+    public void die(){
+        System.out.println("Человек погиб");
     }
 
-    public void setNamePerson(String namePerson) {
-        this.namePerson = namePerson;
+    public String getName() {
+        return name;
     }
 
-    public int getAgePerson() {
-        return agePerson;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setAgePerson(int agePerson) {
-        this.agePerson = agePerson;
+    public int getAge() {
+        return age;
     }
 
-    public int getGrowthPerson() {
-        return growthPerson;
+    public void setAge(int age) {
+        this.age = age;
     }
 
-    public void setGrowthPerson(int growthPerson) {
-        this.growthPerson = growthPerson;
+    public int getGrowth() {
+        return growth;
     }
 
-    public int getWeightPerson() {
-        return weightPerson;
+    public void setGrowth(int growth) {
+        this.growth = growth;
     }
 
-    public void setWeightPerson(int weightPerson) {
-        this.weightPerson = weightPerson;
+    public int getWeight() {
+        return weight;
     }
 
-    public int getMoneyPerson() {
-        return moneyPerson;
+    public void setWeight(int weight) {
+        this.weight = weight;
     }
 
-    public void setMoneyPerson(int moneyPerson) {
-        this.moneyPerson = moneyPerson;
+    public int getMoney() {
+        return money;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
     }
 }
