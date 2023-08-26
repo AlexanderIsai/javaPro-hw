@@ -5,7 +5,7 @@ public class PensionFund {
     private String name;
     private boolean isState;
     private String dateCreation;
-    int quantityMembers;
+    private int quantityMembers;
 
     public PensionFund(String name, boolean isState, String dateCreation, int quantityMembers) {
         this.name = name;

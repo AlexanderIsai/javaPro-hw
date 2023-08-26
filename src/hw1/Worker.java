@@ -2,8 +2,8 @@ package hw1;
 
 public class Worker extends Person {
 
-    double minSalary;
-    double maxSalary;
+    private double minSalary;
+    private double maxSalary;
 
     public Worker(String name, int age, int growth, int weight, int money, double minSalary, double maxSalary) {
         super(name, age, growth, weight, money);

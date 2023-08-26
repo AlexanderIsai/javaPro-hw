@@ -2,7 +2,7 @@ package hw1;
 
 public class Pensioner extends Person {
 
-    double pension;
+    private double pension;
 
     public Pensioner(String name, int age, int growth, int weight, int money, double pension) {
         super(name, age, growth, weight, money);
