@@ -46,7 +46,7 @@ public class PensionFund {
         this.quantityMembers = quantityMembers;
     }
 
-    public void getInfo(){
+    public void getInfo() {
         System.out.println(isState ? "Фонд государственный. Количество членов - " + quantityMembers / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + quantityMembers);
     }
 }

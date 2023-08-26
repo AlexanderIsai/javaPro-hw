@@ -1,6 +1,6 @@
 package hw1;
 
-public class Worker extends Person{
+public class Worker extends Person {
 
     double minSalary;
     double maxSalary;

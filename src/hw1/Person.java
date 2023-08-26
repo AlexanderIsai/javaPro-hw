@@ -24,7 +24,7 @@ public class Person {
         this.money = money;
     }
 
-    public void getInfoAboutPerson(){
+    public void getInfoAboutPerson() {
         System.out.println();
         System.out.println("Имя человека: " + name);
         System.out.println("Возраст человека: " + age + " лет");
@@ -33,13 +33,13 @@ public class Person {
         System.out.println();
     }
 
-    public void goToWork(){
-        if (age < 18 || age > 70){
+    public void goToWork() {
+        if (age < 18 || age > 70) {
             System.out.println("отдыхаю дома");
         } else System.out.println("работаю");
     }
 
-    public void die(){
+    public void die() {
         System.out.println("Человек погиб");
     }
 

@@ -1,6 +1,6 @@
 package hw1;
 
-public class Pensioner extends Person{
+public class Pensioner extends Person {
 
     double pension;
 
