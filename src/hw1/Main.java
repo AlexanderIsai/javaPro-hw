@@ -1,5 +1,7 @@
 package hw1;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -16,6 +18,7 @@ public class Main {
         pensioner.die();
         Worker worker = new Worker("Sergey", 42, 180, 82, 100, 100, 300);
         worker.die();
+
 
 
     }

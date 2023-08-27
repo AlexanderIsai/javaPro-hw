@@ -6,7 +6,6 @@ public class Person {
     private int age;
     private int growth;
     private int weight;
-
     private int money;
 // Идентификатор доступа private делает переменную приватной - т.е. доступной и видимой только в текущем классе
 //    (Person). Также Идея хочет ее сделать константой (т.е. добавить ключевое слово final), однако, это не

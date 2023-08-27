@@ -9,6 +9,14 @@ public class Pensioner extends Person {
         this.pension = pension;
     }
 
+    public double getPension() {
+        return pension;
+    }
+
+    public void setPension(double pension) {
+        this.pension = pension;
+    }
+
     @Override
     public void die() {
         System.out.println("Этот пенсионер умер, он заработал: " + (getAge() - 50) * pension);

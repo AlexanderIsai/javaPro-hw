@@ -11,6 +11,22 @@ public class Worker extends Person {
         this.maxSalary = maxSalary;
     }
 
+    public double getMinSalary() {
+        return minSalary;
+    }
+
+    public void setMinSalary(double minSalary) {
+        this.minSalary = minSalary;
+    }
+
+    public double getMaxSalary() {
+        return maxSalary;
+    }
+
+    public void setMaxSalary(double maxSalary) {
+        this.maxSalary = maxSalary;
+    }
+
     @Override
     public void die() {
         System.out.println("Этот человек не дожил до пенсии");
