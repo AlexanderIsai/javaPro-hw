@@ -1,11 +1,11 @@
 package hw1;
 
-public class Person {
+public abstract class Person {
 
     private String name;
     private int age;
     private int growth;
-    private int weight;
+    private double weight;
     private int money;
 // Идентификатор доступа private делает переменную приватной - т.е. доступной и видимой только в текущем классе
 //    (Person). Также Идея хочет ее сделать константой (т.е. добавить ключевое слово final), однако, это не
@@ -15,12 +15,20 @@ public class Person {
 
 //    Добавить конструктор. Можно конструктор сгенерировать, но лучше написать самому
 
-    public Person(String name, int age, int growth, int weight, int money) {
+    public Person(String name, int age, int growth, double weight, int money) {
         this.name = name;
         this.age = age;
         this.growth = growth;
         this.weight = weight;
         this.money = money;
+    }
+
+    public Person() {
+    }
+
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
     }
 
     public void getInfoAboutPerson() {
@@ -41,6 +49,8 @@ public class Person {
     public void die() {
         System.out.println("Человек погиб");
     }
+
+    public abstract void die(int years);
 
     public String getName() {
         return name;
@@ -66,7 +76,7 @@ public class Person {
         this.growth = growth;
     }
 
-    public int getWeight() {
+    public double getWeight() {
         return weight;
     }
 
@@ -80,5 +90,43 @@ public class Person {
 
     public void setMoney(int money) {
         this.money = money;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Person person = (Person) o;
+
+        if (age != person.age) return false;
+        if (growth != person.growth) return false;
+        if (weight != person.weight) return false;
+        if (money != person.money) return false;
+        return name.equals(person.name);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = name != null ? name.hashCode() : 0;
+        result = 31 * result + age;
+        result = 31 * result + growth;
+        temp = Double.doubleToLongBits(weight);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + money;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", growth=" + growth +
+                ", weight=" + weight +
+                ", money=" + money +
+                '}';
     }
 }
