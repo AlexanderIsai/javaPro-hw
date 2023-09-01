@@ -1,6 +1,10 @@
 package hw1;
 
-public class Worker extends Person {
+import hw1.calculator.AbleToCalculatePension;
+import hw1.calculator.CalculatorUtils;
+
+
+public class Worker extends Person implements AbleToCalculatePension {
 
     private double minSalary;
     private double maxSalary;
@@ -11,7 +15,7 @@ public class Worker extends Person {
         this.maxSalary = maxSalary;
     }
 
-    public Worker(){
+    public Worker() {
     }
 
     public Worker(String name, int age, double minSalary, double maxSalary) {
@@ -44,5 +48,11 @@ public class Worker extends Person {
     @Override
     public void die(int years) {
         System.out.println("Этот человек не доживет до пенсии и умрет через " + years + " лет");
+    }
+
+
+    @Override
+    public double calculatePension() {
+        return CalculatorUtils.calculateAverage((int) minSalary, (int) maxSalary) * 0.25;
     }
 }
