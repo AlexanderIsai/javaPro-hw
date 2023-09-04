@@ -8,6 +8,6 @@ public class CalculatorUtils {
     }
 
     public static double calculateAverage(int first, int second, int third) {
-        return Double.parseDouble(String.format("%.2f", (double) (first + second + third) / 3));
+        return Math.round((double) (first + second + third) / 3 * 100 / 100);
     }
 }
