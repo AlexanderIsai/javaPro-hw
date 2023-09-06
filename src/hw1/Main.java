@@ -19,7 +19,7 @@ public class Main {
         pensioner.goToWork();
         worker.die(15);
         pensioner.die(5);
-
+        worker.setGender(Gender.MALE);
         System.out.println(worker.calculatePension());
 
     }

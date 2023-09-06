@@ -7,13 +7,7 @@ public abstract class Person {
     private int growth;
     private double weight;
     private int money;
-// Идентификатор доступа private делает переменную приватной - т.е. доступной и видимой только в текущем классе
-//    (Person). Также Идея хочет ее сделать константой (т.е. добавить ключевое слово final), однако, это не
-//    влияет на тип доступа. Если переменная у нас приватная, мы не сможем получить к ней доступ напрямую
-//    ЗА пределами класса. Но сможем - через методы)) - гетеры и сетеры. Гетеры помогут получить значение, а сетеры
-//    установить новое значение. Этот подход позволяет сделать более безопасный и контролируемый доступ к переменным.
-
-//    Добавить конструктор. Можно конструктор сгенерировать, но лучше написать самому
+    private Gender gender;
 
     public Person(String name, int age, int growth, double weight, int money) {
         this.name = name;
@@ -58,6 +52,13 @@ public abstract class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Gender getGender() {
+        return gender;
+    }
+    public void setGender(Gender gender) {
+        this.gender = gender;
     }
 
     public int getAge() {

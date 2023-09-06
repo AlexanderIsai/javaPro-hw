@@ -1,5 +1,7 @@
 package hw1;
 
+import hw1.calculator.AbleToCalculatePension;
+
 public class PensionFund {
 
     private String name;
@@ -48,6 +50,14 @@ public class PensionFund {
 
     public void getInfo() {
         System.out.println(isState ? "Фонд государственный. Количество членов - " + quantityMembers / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + quantityMembers);
+    }
+
+    public double calculatePensionFor(AbleToCalculatePension obj) {
+        double pensionCalculate = 0;
+        if (isState) {
+            pensionCalculate = obj.calculatePension();
+        }
+        return pensionCalculate;
     }
 
     @Override
