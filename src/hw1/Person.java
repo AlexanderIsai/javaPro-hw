@@ -1,5 +1,7 @@
 package hw1;
 
+import java.util.Objects;
+
 public abstract class Person {
 
     private String name;
@@ -102,9 +104,10 @@ public abstract class Person {
 
         if (age != person.age) return false;
         if (growth != person.growth) return false;
-        if (weight != person.weight) return false;
+        if (Double.compare(person.weight, weight) != 0) return false;
         if (money != person.money) return false;
-        return name.equals(person.name);
+        if (!Objects.equals(name, person.name)) return false;
+        return gender == person.gender;
     }
 
     @Override
@@ -117,6 +120,7 @@ public abstract class Person {
         temp = Double.doubleToLongBits(weight);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + money;
+        result = 31 * result + (gender != null ? gender.hashCode() : 0);
         return result;
     }
 
@@ -128,6 +132,7 @@ public abstract class Person {
                 ", growth=" + growth +
                 ", weight=" + weight +
                 ", money=" + money +
+                ", gender=" + gender +
                 '}';
     }
 }

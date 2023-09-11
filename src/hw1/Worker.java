@@ -6,6 +6,8 @@ import hw1.calculator.CalculatorUtils;
 
 public class Worker extends Person implements AbleToCalculatePension {
 
+    private final static double PERCENT_OF_PENSION = 0.25;
+
     private double minSalary;
     private double maxSalary;
 
@@ -59,6 +61,37 @@ public class Worker extends Person implements AbleToCalculatePension {
         } else {
             averageSalary = CalculatorUtils.calculateAverage((int) minSalary / 2, (int) maxSalary * 2);
         }
-        return averageSalary * 0.25;
+        return averageSalary * PERCENT_OF_PENSION;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+
+        Worker worker = (Worker) o;
+
+        if (Double.compare(worker.minSalary, minSalary) != 0) return false;
+        return Double.compare(worker.maxSalary, maxSalary) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        long temp;
+        temp = Double.doubleToLongBits(minSalary);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(maxSalary);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Worker{" +
+                "minSalary=" + minSalary +
+                ", maxSalary=" + maxSalary +
+                '}';
     }
 }
