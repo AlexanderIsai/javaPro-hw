@@ -2,18 +2,22 @@ package hw1;
 
 import hw1.calculator.AbleToCalculatePension;
 
+import java.util.ArrayList;
+import java.util.Objects;
+
 public class PensionFund {
 
     private String name;
     private boolean isState;
     private String dateCreation;
-    private int quantityMembers;
+//    private int quantityMembers;
+    private ArrayList<Worker> members = new ArrayList<Worker>();
 
     public PensionFund(String name, boolean isState, String dateCreation, int quantityMembers) {
         this.name = name;
         this.isState = isState;
         this.dateCreation = dateCreation;
-        this.quantityMembers = quantityMembers;
+//        this.quantityMembers = quantityMembers;
     }
 
     public String getName() {
@@ -32,6 +36,14 @@ public class PensionFund {
         isState = state;
     }
 
+    public ArrayList<Worker> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<Worker> members) {
+        this.members = members;
+    }
+
     public String getDateCreation() {
         return dateCreation;
     }
@@ -40,16 +52,16 @@ public class PensionFund {
 //        this.dateCreation = dateCreation;
 //    }
 
-    public int getQuantityMembers() {
-        return quantityMembers;
-    }
-
-    public void setQuantityMembers(int quantityMembers) {
-        this.quantityMembers = quantityMembers;
-    }
+//    public int getQuantityMembers() {
+//        return quantityMembers;
+//    }
+//
+//    public void setQuantityMembers(int quantityMembers) {
+//        this.quantityMembers = quantityMembers;
+//    }
 
     public void getInfo() {
-        System.out.println(isState ? "Фонд государственный. Количество членов - " + quantityMembers / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + quantityMembers);
+        System.out.println(isState ? "Фонд государственный. Количество членов - " + getMembers().size() / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + getMembers().size());
     }
 
     public double calculatePensionFor(AbleToCalculatePension obj) {
@@ -60,6 +72,17 @@ public class PensionFund {
         return pensionCalculate;
     }
 
+    public double calculateMedianPension(ArrayList<Worker> members){
+        if(members.size() == 0){
+            return 0.0;
+        }
+        double sumOfPension = 0;
+        for (Worker member: members) {
+            sumOfPension += member.calculatePension();
+        }
+        return sumOfPension / members.size();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -68,17 +91,17 @@ public class PensionFund {
         PensionFund fund = (PensionFund) o;
 
         if (isState != fund.isState) return false;
-        if (quantityMembers != fund.quantityMembers) return false;
-        if (!name.equals(fund.name)) return false;
-        return dateCreation.equals(fund.dateCreation);
+        if (!Objects.equals(name, fund.name)) return false;
+        if (!Objects.equals(dateCreation, fund.dateCreation)) return false;
+        return Objects.equals(members, fund.members);
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result = name != null ? name.hashCode() : 0;
         result = 31 * result + (isState ? 1 : 0);
-        result = 31 * result + dateCreation.hashCode();
-        result = 31 * result + quantityMembers;
+        result = 31 * result + (dateCreation != null ? dateCreation.hashCode() : 0);
+        result = 31 * result + (members != null ? members.hashCode() : 0);
         return result;
     }
 
@@ -88,7 +111,7 @@ public class PensionFund {
                 "name='" + name + '\'' +
                 ", isState=" + isState +
                 ", dateCreation='" + dateCreation + '\'' +
-                ", quantityMembers=" + quantityMembers +
+                ", members=" + members +
                 '}';
     }
 }
