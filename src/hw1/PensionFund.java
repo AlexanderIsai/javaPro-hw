@@ -3,6 +3,7 @@ package hw1;
 import hw1.calculator.AbleToCalculatePension;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class PensionFund {
@@ -11,7 +12,7 @@ public class PensionFund {
     private boolean isState;
     private String dateCreation;
 //    private int quantityMembers;
-    private ArrayList<Worker> members = new ArrayList<Worker>();
+    private List<Worker> members;
 
     public PensionFund(String name, boolean isState, String dateCreation, int quantityMembers) {
         this.name = name;
@@ -36,11 +37,11 @@ public class PensionFund {
         isState = state;
     }
 
-    public ArrayList<Worker> getMembers() {
+    public List<Worker> getMembers() {
         return members;
     }
 
-    public void setMembers(ArrayList<Worker> members) {
+    public void setMembers(List<Worker> members) {
         this.members = members;
     }
 
@@ -75,7 +76,7 @@ public class PensionFund {
         return pensionCalculate;
     }
 
-    public double calculateMedianPension(ArrayList<Worker> members){
+    public double calculateMedianPension(List<Worker> members){
         if(members == null || members.size() == 0){
             return 0.0;
         }
