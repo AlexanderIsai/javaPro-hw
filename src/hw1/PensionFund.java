@@ -65,7 +65,10 @@ public class PensionFund {
     }
 
     public double calculatePensionFor(AbleToCalculatePension obj) {
-        double pensionCalculate = 0;
+        if(obj == null){
+            return 0.0;
+        }
+        double pensionCalculate = 0.0;
         if (isState) {
             pensionCalculate = obj.calculatePension();
         }
@@ -73,7 +76,7 @@ public class PensionFund {
     }
 
     public double calculateMedianPension(ArrayList<Worker> members){
-        if(members.size() == 0){
+        if(members == null || members.size() == 0){
             return 0.0;
         }
         double sumOfPension = 0;
