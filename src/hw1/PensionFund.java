@@ -82,7 +82,7 @@ public class PensionFund {
         }
         double sumOfPension = 0;
         for (Worker member: members) {
-            sumOfPension += member.calculatePension();
+            sumOfPension += calculatePensionFor(member);
         }
         return sumOfPension / members.size();
     }
