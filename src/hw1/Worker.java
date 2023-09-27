@@ -1,15 +1,25 @@
 package hw1;
 
+import com.sun.jdi.DoubleValue;
 import hw1.calculator.AbleToCalculatePension;
 import hw1.calculator.CalculatorUtils;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Objects;
+import java.util.Set;
 
 
 public class Worker extends Person implements AbleToCalculatePension {
 
     private final static double PERCENT_OF_PENSION = 0.25;
+    private final static double QUANTITY_OF_PROFESSION = 3.0;
+    private final static int COEFFICIENT_EXTRA_PROFESSION = 5;
+
 
     private double minSalary;
     private double maxSalary;
+    private Set<Professions> professions;
 
     public Worker(String name, int age, int growth, double weight, int money, double minSalary, double maxSalary) {
         super(name, age, growth, weight, money);
@@ -42,6 +52,14 @@ public class Worker extends Person implements AbleToCalculatePension {
         this.maxSalary = maxSalary;
     }
 
+    public Set<Professions> getProfessions() {
+        return professions;
+    }
+
+    public void setProfessions(Set<Professions> professions) {
+        this.professions = professions;
+    }
+
     @Override
     public void die() {
         System.out.println("Этот человек не дожил до пенсии");
@@ -55,16 +73,20 @@ public class Worker extends Person implements AbleToCalculatePension {
 
     @Override
     public double calculatePension() {
-        if (getGender() == null){
+        if (getGender() == null || getProfessions() == null){
             return 0.0;
         }
         double averageSalary;
+        double pensionRatio = 1 + (professions.size() / QUANTITY_OF_PROFESSION * COEFFICIENT_EXTRA_PROFESSION) / 100;
         if (this.getGender().equals(Gender.MALE)) {
             averageSalary = CalculatorUtils.calculateAverage((int) minSalary, (int) maxSalary);
         } else {
             averageSalary = CalculatorUtils.calculateAverage((int) minSalary / 2, (int) maxSalary * 2);
         }
-        return averageSalary * PERCENT_OF_PENSION;
+        BigDecimal temp = new BigDecimal(averageSalary * PERCENT_OF_PENSION * pensionRatio);
+        temp = temp.setScale(2, RoundingMode.HALF_UP);
+        double pension = temp.doubleValue();
+        return pension;
     }
 
     @Override
@@ -76,7 +98,8 @@ public class Worker extends Person implements AbleToCalculatePension {
         Worker worker = (Worker) o;
 
         if (Double.compare(worker.minSalary, minSalary) != 0) return false;
-        return Double.compare(worker.maxSalary, maxSalary) == 0;
+        if (Double.compare(worker.maxSalary, maxSalary) != 0) return false;
+        return Objects.equals(professions, worker.professions);
     }
 
     @Override
@@ -87,6 +110,7 @@ public class Worker extends Person implements AbleToCalculatePension {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         temp = Double.doubleToLongBits(maxSalary);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + (professions != null ? professions.hashCode() : 0);
         return result;
     }
 
@@ -95,6 +119,7 @@ public class Worker extends Person implements AbleToCalculatePension {
         return "Worker{" +
                 "minSalary=" + minSalary +
                 ", maxSalary=" + maxSalary +
+                ", professions=" + professions +
                 '}';
     }
 }
