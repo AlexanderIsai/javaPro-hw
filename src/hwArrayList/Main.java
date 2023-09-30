@@ -32,8 +32,13 @@ public class Main {
         myArrayList.addWithNewArray(2, 22);
         myArrayList.addWithoutNewArray(5, 188);
         System.out.println(myArrayList);
-        System.out.println(myArrayList);
         myArrayList.remove(5);
+        myArrayList.remove(5);
+        myArrayList.remove(5);
+        myArrayList.remove(5);
+        myArrayList.remove(5);
+        myArrayList.remove(5);
+        System.out.println(myArrayList);
         myArrayList.trimToSize();
         System.out.println(myArrayList);
 

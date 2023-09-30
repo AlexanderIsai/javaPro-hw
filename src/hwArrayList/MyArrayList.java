@@ -28,6 +28,16 @@ public class MyArrayList {
         array = newArray;
     }
 
+    private void reduce() {
+        if(array.length >= size * 2){
+            int[] newArray = new int[array.length / 2];
+            for (int i = 0; i < newArray.length; i++) {
+                newArray[i] = array[i];
+            }
+            array = newArray;
+        }
+    }
+
     public boolean contains(int element) {
         for (int i = 0; i < size; i++) {
             if (array[i] == element) {
@@ -80,6 +90,7 @@ public class MyArrayList {
         }
         array[array.length - 1] = 0;
         size--;
+        reduce();
     }
 
     public void trimToSize() {

@@ -1,9 +1,8 @@
 package hw1;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,6 +33,21 @@ public class Main {
         professions.add(Professions.PROGRAMMER);
         worker.setProfessions(professions);
         System.out.println(worker.calculatePension());
+
+        PensionFund pensionFund = new PensionFund("AOK", true, "01.01.1980");
+
+        Map<DayOfWeek, Boolean> daysOfWeekMap = new HashMap<>();
+        daysOfWeekMap.put(DayOfWeek.MONDAY, true);
+        daysOfWeekMap.put(DayOfWeek.TUESDAY, true);
+        daysOfWeekMap.put(DayOfWeek.WEDNESDAY, true);
+        daysOfWeekMap.put(DayOfWeek.THURSDAY, true);
+        daysOfWeekMap.put(DayOfWeek.FRIDAY, true);
+        daysOfWeekMap.put(DayOfWeek.SATURDAY, false);
+        daysOfWeekMap.put(DayOfWeek.SUNDAY, false);
+        pensionFund.setDaysOfWeek(daysOfWeekMap);
+        System.out.println(pensionFund);
+        System.out.println(pensionFund.calculatePensionFor(worker));
+
 
     }
 }

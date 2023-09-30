@@ -8,18 +8,18 @@ public class HwArrayList {
     public static void main(String[] args) {
 
         int size = 100;
-        int maxValue = 100;
-        ArrayList<Integer> arrayList = createRandomArrayList(size, maxValue);
+        int minValue = -100;
+        ArrayList<Integer> arrayList = createRandomArrayList(size, minValue);
         System.out.println(arrayList);
         printBiggers(arrayList);
         System.out.println(getMinPositiveValue(arrayList));
     }
 
-    public static ArrayList<Integer> createRandomArrayList(int size, int maxValue) {
+    public static ArrayList<Integer> createRandomArrayList(int size, int minValue) {
         Random random = new Random();
         ArrayList<Integer> arrayList = new ArrayList<Integer>(size);
         for (int i = 0; i < size; i++) {
-            arrayList.add(random.nextInt(maxValue));
+            arrayList.add(random.nextInt(minValue, Math.abs(minValue)));
         }
         return arrayList;
     }
@@ -34,7 +34,8 @@ public class HwArrayList {
     }
 
     public static int getMinPositiveValue(ArrayList<Integer> arrayList) {
-        int min = getFirstPositiveValue(arrayList);
+        int min = Integer.MAX_VALUE;
+//        int min = getFirstPositiveValue(arrayList);
         for (int element : arrayList) {
             if (element < min && element > 0) {
                 min = element;

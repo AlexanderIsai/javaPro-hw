@@ -2,8 +2,11 @@ package hw1;
 
 import hw1.calculator.AbleToCalculatePension;
 
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class PensionFund {
@@ -11,14 +14,15 @@ public class PensionFund {
     private String name;
     private boolean isState;
     private String dateCreation;
-//    private int quantityMembers;
+    //    private int quantityMembers;
     private List<Worker> members;
 
-    public PensionFund(String name, boolean isState, String dateCreation, int quantityMembers) {
+    private Map<DayOfWeek, Boolean> daysOfWeek;
+
+    public PensionFund(String name, boolean isState, String dateCreation) {
         this.name = name;
         this.isState = isState;
         this.dateCreation = dateCreation;
-//        this.quantityMembers = quantityMembers;
     }
 
     public String getName() {
@@ -45,28 +49,27 @@ public class PensionFund {
         this.members = members;
     }
 
+    public Map<DayOfWeek, Boolean> getDaysOfWeek() {
+        return daysOfWeek;
+    }
+
+    public void setDaysOfWeek(Map<DayOfWeek, Boolean> daysOfWeek) {
+        this.daysOfWeek = daysOfWeek;
+    }
+
     public String getDateCreation() {
         return dateCreation;
     }
 
-//    public void setDateCreation(String dateCreation) {
-//        this.dateCreation = dateCreation;
-//    }
-
-//    public int getQuantityMembers() {
-//        return quantityMembers;
-//    }
-//
-//    public void setQuantityMembers(int quantityMembers) {
-//        this.quantityMembers = quantityMembers;
-//    }
-
     public void getInfo() {
-        System.out.println(isState ? "Фонд государственный. Количество членов - " + getMembers().size() / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + getMembers().size());
+        int count = (members != null) ? members.size() : 0;
+        System.out.println(isState ? "Фонд государственный. Количество членов - " + count / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + count);
     }
 
     public double calculatePensionFor(AbleToCalculatePension obj) {
-        if(obj == null){
+        LocalDate localDate = LocalDate.now();
+        DayOfWeek dayOfWeek = localDate.getDayOfWeek();
+        if (obj == null || daysOfWeek == null || !daysOfWeek.get(dayOfWeek)) {
             return 0.0;
         }
         double pensionCalculate = 0.0;
@@ -76,12 +79,12 @@ public class PensionFund {
         return pensionCalculate;
     }
 
-    public double calculateMedianPension(List<Worker> members){
-        if(members == null || members.size() == 0){
+    public double calculateMedianPension(List<Worker> members) {
+        if (members == null || members.size() == 0) {
             return 0.0;
         }
         double sumOfPension = 0;
-        for (Worker member: members) {
+        for (Worker member : members) {
             sumOfPension += calculatePensionFor(member);
         }
         return sumOfPension / members.size();
@@ -97,7 +100,8 @@ public class PensionFund {
         if (isState != fund.isState) return false;
         if (!Objects.equals(name, fund.name)) return false;
         if (!Objects.equals(dateCreation, fund.dateCreation)) return false;
-        return Objects.equals(members, fund.members);
+        if (!Objects.equals(members, fund.members)) return false;
+        return Objects.equals(daysOfWeek, fund.daysOfWeek);
     }
 
     @Override
@@ -106,6 +110,7 @@ public class PensionFund {
         result = 31 * result + (isState ? 1 : 0);
         result = 31 * result + (dateCreation != null ? dateCreation.hashCode() : 0);
         result = 31 * result + (members != null ? members.hashCode() : 0);
+        result = 31 * result + (daysOfWeek != null ? daysOfWeek.hashCode() : 0);
         return result;
     }
 
@@ -116,6 +121,7 @@ public class PensionFund {
                 ", isState=" + isState +
                 ", dateCreation='" + dateCreation + '\'' +
                 ", members=" + members +
+                ", daysOfWeek=" + daysOfWeek +
                 '}';
     }
 }
