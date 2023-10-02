@@ -43,5 +43,30 @@ public class Route {
         }
     }
 
+    @Override
+    public String toString() {
+        return "Route{" +
+                "transfer=" + transfer +
+                ", flights=" + flights +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Route route = (Route) o;
+
+        if (transfer != route.transfer) return false;
+        return Objects.equals(flights, route.flights);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = transfer;
+        result = 31 * result + (flights != null ? flights.hashCode() : 0);
+        return result;
+    }
 }
 
