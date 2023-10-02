@@ -4,8 +4,9 @@ import java.util.*;
 
 public class Route {
 
-    int transfer = 0;
+    int transfer = -1;
     Scanner scanner = new Scanner(System.in);
+    Map<String, String> flights = new HashMap<>();
 
     public Route() {
     }
@@ -25,15 +26,16 @@ public class Route {
             return false;
         }
         transfer++;
-        if (transfer == 20) {
-            System.out.println("Das ist impossible");
+        if (transfer > 1 && flights.containsKey(search[0])) {
+            System.out.println("Das ist impossible, wir tried " + transfer + " mals");
             return false;
         }
+        flights.put(search[0], routes.get(search[0]));
         String departure = search[0];
         String arrive = search[1];
         System.out.println(departure + " - " + routes.get(departure));
         if (routes.get(departure).equals(arrive)) {
-            System.out.println("S priezdom " + (transfer - 1));
+            System.out.println("S priezdom " + (transfer));
             return true;
         } else {
             search[0] = routes.get(departure);
