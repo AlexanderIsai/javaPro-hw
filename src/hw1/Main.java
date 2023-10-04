@@ -1,7 +1,6 @@
 package hw1;
 
 import java.time.DayOfWeek;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Main {
@@ -47,6 +46,8 @@ public class Main {
         pensionFund.setDaysOfWeek(daysOfWeekMap);
         System.out.println(pensionFund);
         System.out.println(pensionFund.calculatePensionFor(worker));
+
+
 
 
     }
