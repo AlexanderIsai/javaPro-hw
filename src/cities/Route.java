@@ -27,7 +27,7 @@ public class Route {
         }
         transfer++;
         if (transfer > 1 && flights.containsKey(search[0])) {
-            System.out.println("Das ist impossible, wir tried " + transfer + " mals");
+            System.out.println("Das ist impossible, wir tried " + transfer + " times");
             return false;
         }
         flights.put(search[0], routes.get(search[0]));
@@ -35,7 +35,7 @@ public class Route {
         String arrive = search[1];
         System.out.println(departure + " - " + routes.get(departure));
         if (routes.get(departure).equals(arrive)) {
-            System.out.println("S priezdom " + (transfer));
+            System.out.println("You arrived " + (transfer));
             return true;
         } else {
             search[0] = routes.get(departure);

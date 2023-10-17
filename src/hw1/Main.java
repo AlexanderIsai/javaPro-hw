@@ -35,15 +35,22 @@ public class Main {
 
         PensionFund pensionFund = new PensionFund("AOK", true, "01.01.1980");
 
-        Map<DayOfWeek, Boolean> daysOfWeekMap = new HashMap<>();
-        daysOfWeekMap.put(DayOfWeek.MONDAY, true);
-        daysOfWeekMap.put(DayOfWeek.TUESDAY, true);
-        daysOfWeekMap.put(DayOfWeek.WEDNESDAY, true);
-        daysOfWeekMap.put(DayOfWeek.THURSDAY, true);
-        daysOfWeekMap.put(DayOfWeek.FRIDAY, true);
-        daysOfWeekMap.put(DayOfWeek.SATURDAY, false);
-        daysOfWeekMap.put(DayOfWeek.SUNDAY, false);
-        pensionFund.setDaysOfWeek(daysOfWeekMap);
+//        Map<DayOfWeek, Boolean> daysOfWeekMap = new HashMap<>();
+        pensionFund.getDaysOfWeek().put(DayOfWeek.MONDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.TUESDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.WEDNESDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.THURSDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.FRIDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.SATURDAY, true);
+        pensionFund.getDaysOfWeek().put(DayOfWeek.SUNDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.MONDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.TUESDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.WEDNESDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.THURSDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.FRIDAY, true);
+//        daysOfWeekMap.put(DayOfWeek.SATURDAY, false);
+//        daysOfWeekMap.put(DayOfWeek.SUNDAY, false);
+//        pensionFund.setDaysOfWeek(daysOfWeekMap);
         System.out.println(pensionFund);
         System.out.println(pensionFund.calculatePensionFor(worker));
 

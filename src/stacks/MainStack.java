@@ -9,6 +9,8 @@ public class MainStack {
         String string = "евирпим ,тр";
         int secret = 5;
         encryption(string, secret);
+        System.out.println();
+        anotherSolving(string, secret);
     }
 
     public static void encryption(String str, int secret) {
@@ -36,5 +38,17 @@ public class MainStack {
                 }
             }
         }
+    }
+    public static void anotherSolving(String str, int secret){
+        Stack<Character> characterStack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+            characterStack.push(str.charAt(i));
+            if (characterStack.size() == secret){
+                for (int j = 0; j < secret; j++) {
+                    System.out.print(characterStack.pop());
+                }
+            }
+        }
+        System.out.print(characterStack.pop());
     }
 }

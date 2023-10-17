@@ -13,8 +13,8 @@ import java.util.Set;
 public class Worker extends Person implements AbleToCalculatePension {
 
     private final static double PERCENT_OF_PENSION = 0.25;
-    private final static double QUANTITY_OF_PROFESSION = 3.0;
-    private final static int COEFFICIENT_EXTRA_PROFESSION = 5;
+    private final static int QUANTITY_OF_PROFESSION = 3;
+    private final static double COEFFICIENT_EXTRA_PROFESSION = 0.05;
 
 
     private double minSalary;
@@ -77,7 +77,9 @@ public class Worker extends Person implements AbleToCalculatePension {
             return 0.0;
         }
         double averageSalary;
-        double pensionRatio = 1 + (professions.size() / QUANTITY_OF_PROFESSION * COEFFICIENT_EXTRA_PROFESSION) / 100;
+        System.out.println(professions.size() / QUANTITY_OF_PROFESSION);
+        int coefficientOfProfession = professions.size() / QUANTITY_OF_PROFESSION;
+        double pensionRatio = 1 + coefficientOfProfession * COEFFICIENT_EXTRA_PROFESSION;
         if (this.getGender().equals(Gender.MALE)) {
             averageSalary = CalculatorUtils.calculateAverage((int) minSalary, (int) maxSalary);
         } else {

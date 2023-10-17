@@ -31,9 +31,7 @@ public class MyArrayList {
     private void reduce() {
         if(array.length >= size * 2){
             int[] newArray = new int[array.length / 2];
-            for (int i = 0; i < newArray.length; i++) {
-                newArray[i] = array[i];
-            }
+            System.arraycopy(array, 0, newArray, 0, newArray.length);
             array = newArray;
         }
     }
@@ -51,13 +49,7 @@ public class MyArrayList {
         if (array == null) {
             return 0;
         }
-        int size = 0;
-        for (int i = 0; i < array.length; i++) {
-//            if (array[i] != 0) {
-//                size++;
-//            }
-            size = (array[i] != 0) ? ++size : size;
-        }
+
         return size;
     }
 
@@ -73,9 +65,7 @@ public class MyArrayList {
 
     public void addWithNewArray(int index, int element) {
         int[] newArray = new int[array.length + 1];
-        for (int i = 0; i < index; i++) {
-            newArray[i] = array[i];
-        }
+        if (index >= 0) System.arraycopy(array, 0, newArray, 0, index);
         newArray[index] = element;
         for (int i = index + 1; i < newArray.length; i++) {
             newArray[i] = array[i - 1];

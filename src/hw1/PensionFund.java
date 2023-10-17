@@ -4,10 +4,7 @@ import hw1.calculator.AbleToCalculatePension;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 public class PensionFund {
 
@@ -23,6 +20,7 @@ public class PensionFund {
         this.name = name;
         this.isState = isState;
         this.dateCreation = dateCreation;
+        this.daysOfWeek = new HashMap<>();
     }
 
     public String getName() {
@@ -66,10 +64,23 @@ public class PensionFund {
         System.out.println(isState ? "Фонд государственный. Количество членов - " + count / 1000 + " тысяч" : "Фонд негосударственный. Количество членов - " + count);
     }
 
-    public double calculatePensionFor(AbleToCalculatePension obj) {
+    public boolean isWorkingDay(){
+        boolean isWorking = false;
         LocalDate localDate = LocalDate.now();
         DayOfWeek dayOfWeek = localDate.getDayOfWeek();
-        if (obj == null || daysOfWeek == null || !daysOfWeek.get(dayOfWeek)) {
+        if (daysOfWeek.get(dayOfWeek)){
+            isWorking = true;
+            System.out.println("Мы работаем. Сегодня - " + dayOfWeek);
+        } else {
+            System.out.println("Мы не работаем. Сегодня - " + dayOfWeek);
+        }
+
+        return isWorking;
+    }
+
+    public double calculatePensionFor(AbleToCalculatePension obj) {
+
+        if (obj == null || daysOfWeek == null || !isWorkingDay()) {
             return 0.0;
         }
         double pensionCalculate = 0.0;

@@ -35,9 +35,9 @@ public class Main {
         myArrayList.remove(5);
         myArrayList.remove(5);
         myArrayList.remove(5);
-        myArrayList.remove(5);
-        myArrayList.remove(5);
-        myArrayList.remove(5);
+//        myArrayList.remove(5);
+//        myArrayList.remove(5);
+//        myArrayList.remove(5);
         System.out.println(myArrayList);
         myArrayList.trimToSize();
         System.out.println(myArrayList);
