@@ -11,7 +11,7 @@ public class MainFunctionalInterfaces {
 
     public static void main(String[] args) {
 
-        Supplier<String> supplier = () -> getRandomString();
+        Supplier<String> supplier = MainFunctionalInterfaces::getRandomString;
         Function<String, Character> function = (string) -> getPopularChar(string);
         System.out.println(function.apply(supplier.get()));
     }
