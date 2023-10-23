@@ -1,10 +1,11 @@
 package streams;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
-//1) Делит все числа на 2
+//        1) Делит все числа на 2
 //        2) Оставляет только те, которые больше, чем 25
 //        3) Вычитает 30 из каждого числа
 //        4) Сортирует
@@ -21,6 +22,7 @@ public class MyStream {
         System.out.println(arrayList);
         Optional<Integer> result = arrayList.stream()
                 .map(element -> element / 2)
+                .filter(element -> element > 25)
                 .map(element -> element - 30)
                 .sorted()
                 .limit(5)

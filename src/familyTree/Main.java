@@ -32,14 +32,19 @@ public class Main {
 
         human1.setMother(mother1);
         human1.setFather(father1);
+
         human2.setMother(mother2);
         human2.setFather(father2);
+
         human3.setMother(mother3);
         human3.setFather(father3);
+
         human4.setMother(mother4);
         human4.setFather(father4);
+
         human5.setMother(mother5);
         human5.setFather(father5);
+
         human6.setMother(mother6);
         human6.setFather(father6);
 
