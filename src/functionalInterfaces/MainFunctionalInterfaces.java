@@ -41,7 +41,7 @@ public class MainFunctionalInterfaces {
 
     public static String getRandomString() {
         Random random = new Random();
-        String alphabet = "qwertyuiopasdfghjklzxcvbnm";
+        String alphabet = "qwertyuiopasdfghjklzxcvbnm ";
         StringBuilder stringBuilder = new StringBuilder();
         int stringLength = random.nextInt(100);
         for (int i = 0; i < stringLength; i++) {
